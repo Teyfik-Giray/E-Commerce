@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/AnasayfaLayout.cshtml";
+}
+@model deneme.ProductManagementViewModel
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Doğal & Organik</p>
+                    <h1>Alışveriş</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">Hepsi</li>
+                        @foreach (var kategori in Model.Categories)
+                        {
+                            <li data-filter=".@kategori.kategori_adi.ToLower().Replace(" ", "").Replace("&", "").Replace("ü", "u").Replace("ö", "o").Replace("ı", "i").Replace("ç", "c").Replace("ş", "s")">@kategori.kategori_adi</li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="product-lists">
+            @foreach (var urun in Model.Products)
+            {
+                <div class="col-lg-4 col-md-6 text-center @urun.kategoriler.kategori_adi.ToLower().Replace(" ", "").Replace("&", "").Replace("ü", "u").Replace("ö", "o").Replace("ı", "i").Replace("ç", "c").Replace("ş", "s")">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="UrunDetay">
+                                <img src="@Url.Content(urun.urun_gorseli)" alt="@urun.urun_adi">
+                            </a>
+                        </div>
+                        <h3>@urun.urun_adi</h3>
+                        <p class="product-price"> @urun.urun_fiyatı₺</p>
+                        <p>@urun.urun_aciklama</p>
+                        <a href="cart.html" class="cart-btn">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </a>
+                        @foreach (var stok in urun.stoklar)
+                        {
+                            if (stok.stok_miktari <= 5)
+                            {
+                                <p style="color: red; font-weight: bold;">⚠ Tükeniyor!</p>
+                            }
+                            else if (stok.stok_miktari == 0)
+                            {
+                                <p style="color: red; font-weight: bold;">Tükendi!</p>
+                            }
+                            else
+                            {
+                                <p style="color: green; font-weight:bold;">Kalan Stok: @stok.stok_miktari</p>
+                            }
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <li><a href="#">Önceki</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a class="active" href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">Sonraki</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end products -->
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+    const cartButtons = document.querySelectorAll(".cart-btn");
+    const toast = document.getElementById("toast");
+
+    cartButtons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Ürün bilgilerini al
+            const product = this.closest(".single-product-item");
+            const productName = product.querySelector("h3").textContent;
+            const productPrice = product.querySelector(".product-price").textContent.replace("Per Kg", "").trim();
+            const productImage = product.querySelector(".product-image img").src;
+
+            // Sepetteki ürünleri al
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // Ürün zaten sepette varsa miktarını artır
+            let existingProduct = cart.find(item => item.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
+            }
+
+            // Güncellenmiş sepeti `localStorage`'a kaydet
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            // Bildirimi göster
+            toast.textContent = `"${productName}" sepete eklendi!`;
+            toast.classList.add("show");
+
+            // 3 saniye sonra bildirimi gizle ve sepete yönlendir
+            setTimeout(() => {
+                toast.classList.remove("show");
+                window.location.href = "Cart"; // Kullanıcıyı sepete yönlendir
+            }, 3000);
+        });
+    });
+});
+</script>

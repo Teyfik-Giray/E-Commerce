@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "MusteriTalepleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model deneme.ProductManagementViewModel
+
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>E-Posta</th>
+            <th>Telefon</th>
+            <th>Şehir</th>
+            <th>Ürün</th>
+            <th>Açıklama</th>
+            <th>Gün</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int sıra = 1;
+            foreach (var talep in Model.Talepler)
+            {
+                <tr>
+                    <td>@sıra</td>
+                    <td>@talep.ad</td>
+                    <td>@talep.soyad</td>
+                    <td>@talep.eposta</td>
+                    <td>@talep.tel</td>
+                    <td>@talep.sehir</td>
+                    <td>@talep.urun</td>
+                    <td>@talep.aciklama</td>
+                    <td>@talep.gun</td>
+                </tr>
+                sıra++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="9" class="text-center">Henüz talep bulunmamaktadır.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>

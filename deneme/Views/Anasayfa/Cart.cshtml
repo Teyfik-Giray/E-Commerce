@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/AnasayfaLayout.cshtml";
+}
+
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Doğal & Organik</p>
+                    <h1>Sepet</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- cart -->
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th class="product-remove"></th>
+                                <th class="product-image">Ürün Görseli</th>
+                                <th class="product-name">İsim</th>
+                                <th class="product-price">Fiyat</th>
+                                <th class="product-quantity">Miktar</th>
+                                <th class="product-total">Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="total-section">
+                    <table class="total-table">
+                        <thead class="total-table-head">
+                            <tr class="table-total-row">
+                                <th>Toplam</th>
+                                <th>Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="total-data">
+                                <td><strong>Ara Toplam: </strong></td>
+                                <td>500₺</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Kargo Bedeli : </strong></td>
+                                <td>85₺</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Total: </strong></td>
+                                <td>545₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <a href="Cart" class="boxed-btn">Sepeti Güncelle</a>
+                        <a href="Checkout" class="boxed-btn black">Ödemeye Geç</a>
+                    </div>
+                </div>
+
+                <div class="coupon-section">
+                    <h3>İndirim Kuponu</h3>
+                    <div class="coupon-form-wrap">
+                        <form action="index.html">
+                            <p><input type="text" placeholder="Kupon Kodu"></p>
+                            <p><input type="submit" value="Uygula"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end cart -->
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartTableBody = document.querySelector(".cart-table tbody");
+        const subtotalElement = document.querySelector(".total-data td:last-child"); // Ara toplam
+        const shippingElement = document.querySelectorAll(".total-data td:last-child")[1]; // Kargo bedeli
+        const totalElement = document.querySelectorAll(".total-data td:last-child")[2]; // Genel toplam
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let subtotal = 0;
+        const shippingCost = 85; // Sabit kargo ücreti
+
+        cartTableBody.innerHTML = ""; // Önce tabloyu temizle
+
+        cart.forEach(product => {
+            let row = document.createElement("tr");
+            row.classList.add("table-body-row");
+
+            const productTotal = parseFloat(product.price) * product.quantity;
+
+            row.innerHTML = `
+                <td class="product-remove"><a href="#" class="remove-item" data-name="${product.name}"><i class="far fa-window-close"></i></a></td>
+                <td class="product-image"><img src="${product.image}" alt=""></td>
+                <td class="product-name">${product.name}</td>
+                <td class="product-price">${product.price}₺</td>
+                <td class="product-quantity"><input type="number" value="${product.quantity}" min="1" data-name="${product.name}" class="update-quantity"></td>
+                <td class="product-total">${productTotal.toFixed(2)}₺</td>
+            `;
+
+            subtotal += productTotal;
+            cartTableBody.appendChild(row);
+        });
+
+        // Toplamları güncelle
+        subtotalElement.textContent = subtotal.toFixed(2) + "₺";
+        shippingElement.textContent = shippingCost.toFixed(2) + "₺";
+        totalElement.textContent = (subtotal + shippingCost).toFixed(2) + "₺";
+
+        // Ürün Silme
+        document.querySelectorAll(".remove-item").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                const productName = this.getAttribute("data-name");
+                cart = cart.filter(item => item.name !== productName);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                location.reload();
+            });
+        });
+
+        // Miktar Güncelleme
+        document.querySelectorAll(".update-quantity").forEach(input => {
+            input.addEventListener("change", function () {
+                const productName = this.getAttribute("data-name");
+                const newQuantity = parseInt(this.value);
+
+                let product = cart.find(item => item.name === productName);
+                if (product) {
+                    product.quantity = newQuantity > 0 ? newQuantity : 1;
+                }
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+                location.reload();
+            });
+        });
+    });
+</script>

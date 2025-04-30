@@ -1,0 +1,413 @@
+﻿
+
+@{
+    ViewBag.Title = "Talep";
+    Layout = "~/Views/Shared/AnasayfaLayout.cshtml";
+}
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 offset-lg-2 text-center">
+                <div class="hero-text">
+                    <div class="hero-text-tablecell">
+                        <h1>Ürün Talebi</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hero area -->
+
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="contact-form">
+                    <h2 class="text-center mb-4">Ürün Talep Formu</h2>
+                    <form id="talep-form" method="post">
+                        <div class="row">
+                            <!-- Kişisel Bilgiler -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ad">Adınız*</label>
+                                    <input type="text" class="form-control" id="ad" name="ad" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="soyad">Soyadınız*</label>
+                                    <input type="text" class="form-control" id="soyad" name="soyad" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- İletişim Bilgileri -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">E-posta Adresiniz*</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="email-prefix" name="email-prefix" required placeholder="kullaniciadi">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">@@gmail.com</span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="telefon">Telefon Numaranız*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">+90</span>
+                                        </div>
+                                        <input type="tel" class="form-control" id="telefon" name="telefon"
+                                               pattern="[0-9]{10}"
+                                               title="Lütfen 10 haneli telefon numaranızı giriniz (Örn: 5551234567)"
+                                               required placeholder="5__ ___ __ __">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Şehir Bilgisi -->
+                        <div class="form-group">
+                            <label for="sehir">Şehir*</label>
+                            <select class="form-control" id="sehir" name="sehir" required>
+                                <option value="" selected disabled>Şehrinizi seçiniz</option>
+                                <option value="Adana">Adana</option>
+                                <option value="Adıyaman">Adıyaman</option>
+                                <option value="Afyonkarahisar">Afyonkarahisar</option>
+                                <option value="Ağrı">Ağrı</option>
+                                <option value="Amasya">Amasya</option>
+                                <option value="Ankara">Ankara</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Artvin">Artvin</option>
+                                <option value="Aydın">Aydın</option>
+                                <option value="Balıkesir">Balıkesir</option>
+                                <option value="Bilecik">Bilecik</option>
+                                <option value="Bingöl">Bingöl</option>
+                                <option value="Bitlis">Bitlis</option>
+                                <option value="Bolu">Bolu</option>
+                                <option value="Burdur">Burdur</option>
+                                <option value="Bursa">Bursa</option>
+                                <option value="Çanakkale">Çanakkale</option>
+                                <option value="Çankırı">Çankırı</option>
+                                <option value="Çorum">Çorum</option>
+                                <option value="Denizli">Denizli</option>
+                                <option value="Diyarbakır">Diyarbakır</option>
+                                <option value="Edirne">Edirne</option>
+                                <option value="Elazığ">Elazığ</option>
+                                <option value="Erzincan">Erzincan</option>
+                                <option value="Erzurum">Erzurum</option>
+                                <option value="Eskişehir">Eskişehir</option>
+                                <option value="Gaziantep">Gaziantep</option>
+                                <option value="Giresun">Giresun</option>
+                                <option value="Gümüşhane">Gümüşhane</option>
+                                <option value="Hakkari">Hakkari</option>
+                                <option value="Hatay">Hatay</option>
+                                <option value="Isparta">Isparta</option>
+                                <option value="Mersin">Mersin</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Kars">Kars</option>
+                                <option value="Kastamonu">Kastamonu</option>
+                                <option value="Kayseri">Kayseri</option>
+                                <option value="Kırklareli">Kırklareli</option>
+                                <option value="Kırşehir">Kırşehir</option>
+                                <option value="Kocaeli">Kocaeli</option>
+                                <option value="Konya">Konya</option>
+                                <option value="Kütahya">Kütahya</option>
+                                <option value="Malatya">Malatya</option>
+                                <option value="Manisa">Manisa</option>
+                                <option value="Kahramanmaraş">Kahramanmaraş</option>
+                                <option value="Mardin">Mardin</option>
+                                <option value="Muğla">Muğla</option>
+                                <option value="Muş">Muş</option>
+                                <option value="Nevşehir">Nevşehir</option>
+                                <option value="Niğde">Niğde</option>
+                                <option value="Ordu">Ordu</option>
+                                <option value="Rize">Rize</option>
+                                <option value="Sakarya">Sakarya</option>
+                                <option value="Samsun">Samsun</option>
+                                <option value="Siirt">Siirt</option>
+                                <option value="Sinop">Sinop</option>
+                                <option value="Sivas">Sivas</option>
+                                <option value="Tekirdağ">Tekirdağ</option>
+                                <option value="Tokyo">Tokat</option>
+                                <option value="Trabzon">Trabzon</option>
+                                <option value="Tunceli">Tunceli</option>
+                                <option value="Şanlıurfa">Şanlıurfa</option>
+                                <option value="Uşak">Uşak</option>
+                                <option value="Van">Van</option>
+                                <option value="Yozgat">Yozgat</option>
+                                <option value="Zonguldak">Zonguldak</option>
+                                <option value="Aksaray">Aksaray</option>
+                                <option value="Bayburt">Bayburt</option>
+                                <option value="Karaman">Karaman</option>
+                                <option value="Kırıkkale">Kırıkkale</option>
+                                <option value="Batman">Batman</option>
+                                <option value="Şırnak">Şırnak</option>
+                                <option value="Bartın">Bartın</option>
+                                <option value="Ardahan">Ardahan</option>
+                                <option value="Iğdır">Iğdır</option>
+                                <option value="Yalova">Yalova</option>
+                                <option value="Karabük">Karabük</option>
+                                <option value="Kilis">Kilis</option>
+                                <option value="Osmaniye">Osmaniye</option>
+                                <option value="Düzce">Düzce</option>
+                            </select>
+                        </div>
+
+                        <!-- Ürün Bilgisi -->
+                        <div class="form-group">
+                            <label for="urun">İstediğiniz Ürün*</label>
+                            <select class="form-control" id="urun" name="urun" required>
+                                <option value="" selected disabled>Ürün seçiniz</option>
+                                <option value="Bal">Organik Bal</option>
+                                <option value="Pekmez">Doğal Pekmez</option>
+                                <option value="Reçel">Ev Yapımı Reçel</option>
+                                <option value="Zeytinyağı">Soğuk Sıkım Zeytinyağı</option>
+                                <option value="Tahin">Doğal Tahin</option>
+                                <option value="Diğer">Diğer (Aşağıda Belirtiniz)</option>
+                            </select>
+                        </div>
+
+                        <!-- Ürün Detayları -->
+                        <div class="form-group">
+                            <label for="detay">Ürün Detayları*</label>
+                            <textarea class="form-control" id="detay" name="detay" rows="5" required placeholder="İstediğiniz ürünle ilgili detayları yazınız (miktar, özellikler, özel istekler vb.)"></textarea>
+                        </div>
+
+                        <!-- Teslimat Süresi -->
+                        <div class="form-group">
+                            <label for="teslimat">Kaç gün içinde teslim almak istersiniz?*</label>
+                            <select class="form-control" id="teslimat" name="teslimat" required>
+                                <option value="" selected disabled>Teslimat süresini seçiniz</option>
+                                <option value="3 gün içinde">3 gün içinde</option>
+                                <option value="7 gün içinde">1 hafta içinde</option>
+                                <option value="14 gün içinde">2 hafta içinde</option>
+                                <option value="30 gün içinde">1 ay içinde</option>
+                                <option value="60 gün içinde">2 ay içinde</option>
+                                <option value="Aciliyeti yok, uygun zamanda">Aciliyet yok, uygun zamanda</option>
+                            </select>
+                        </div>
+
+                        <!-- Form Gönder Butonu -->
+                        <div class="text-center">
+                            <button type="submit" class="boxed-btn">Talep Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .contact-form {
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+        .contact-form label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .contact-form .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-form textarea.form-control {
+            min-height: 150px;
+        }
+
+    .boxed-btn {
+        background: #F28123;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .boxed-btn:hover {
+            background: #051922;
+            color: #F28123;
+        }
+
+    /* Özel input grupları için stil */
+    .input-group-text {
+        background-color: #e9ecef;
+        color: #495057;
+        height: 33px;
+    }
+</style>
+
+@*<script>
+        // Form gönderim işlemi
+        document.getElementById('talep-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // E-posta adresini birleştir
+            const emailPrefix = document.getElementById('email-prefix').value;
+            document.getElementById('email').value = emailPrefix + '@@gmail.com';
+
+            // Burada form verilerini işleyebilir veya AJAX ile sunucuya gönderebilirsiniz
+            console.log('E-posta:', document.getElementById('email').value);
+            console.log('Telefon:', '+90' + document.getElementById('telefon').value);
+
+            // Örnek bir başarılı gönderim mesajı:
+            showToast('Talebiniz başarıyla gönderildi! En kısa sürede sizinle iletişime geçilecektir.');
+
+            // Formu temizle
+            this.reset();
+        });
+
+        // Telefon numarası girişini kontrol et
+        document.getElementById('telefon').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10);
+        });
+
+        // Toast bildirimi göster
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast show';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+    <script>
+        document.getElementById('talep-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+
+            // E-posta adresini birleştir
+            const emailPrefix = document.getElementById('email-prefix').value;
+            document.getElementById('email').value = emailPrefix + '@@gmail.com';
+
+            // Burada form verilerini işleyebilir veya AJAX ile sunucuya gönderebilirsiniz
+            console.log('E-posta:', document.getElementById('email').value);
+            console.log('Telefon:', '+90' + document.getElementById('telefon').value);
+
+            // Örnek bir başarılı gönderim mesajı:
+            showToast('Talebiniz başarıyla gönderildi! En kısa sürede sizinle iletişime geçilecektir.');
+
+            // Formu temizle
+            this.reset();
+        const emailPrefix = document.getElementById('email-prefix').value;
+        document.getElementById('email').value = emailPrefix + '@@gmail.com';
+
+        const data = {
+            ad: document.getElementById('ad').value,
+            soyad: document.getElementById('soyad').value,
+            email: document.getElementById('email').value,
+            telefon: '+90' + document.getElementById('telefon').value,
+            sehir: document.getElementById('sehir').value,
+            urun: document.getElementById('urun').value,
+            detay: document.getElementById('detay').value,
+            teslimat: parseInt(document.getElementById('teslimat').value)
+        };
+
+        fetch('/Anasayfa/TalepKaydet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.success){
+                showToast(result.message);
+                document.getElementById('talep-form').reset();
+            } else {
+                showToast("Hata: " + result.message);
+            }
+        })
+        .catch(error => {
+            console.error('Hata:', error);
+            showToast("Gönderim sırasında bir hata oluştu.");
+        });
+    });
+
+    </script>*@
+<script>
+    // Telefon numarası girişini kontrol et
+    document.getElementById('telefon').addEventListener('input', function (e) {
+        this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10);
+    });
+
+    // Toast bildirimi göster
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast show';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+
+    // Form gönderim işlemi
+    document.getElementById('talep-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // E-posta adresini birleştir
+        const emailPrefix = document.getElementById('email-prefix').value;
+        document.getElementById('email').value = emailPrefix + '@@gmail.com';
+
+        // Form verilerini hazırla
+        const data = {
+            ad: document.getElementById('ad').value,
+            soyad: document.getElementById('soyad').value,
+            eposta: document.getElementById('email').value,
+            tel: '+90' + document.getElementById('telefon').value,
+            sehir: document.getElementById('sehir').value,
+            urun: document.getElementById('urun').value,
+            aciklama: document.getElementById('detay').value,
+            gun: document.getElementById('teslimat').value
+        };
+
+        // Sunucuya gönder
+        fetch('/Anasayfa/TalepKaydet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    showToast(result.message);
+                    document.getElementById('talep-form').reset();
+                } else {
+                    showToast("Hata: " + result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                showToast("Gönderim sırasında bir hata oluştu.");
+            });
+    });
+</script>

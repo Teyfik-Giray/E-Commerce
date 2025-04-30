@@ -1,0 +1,272 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+    <!-- title -->
+    <title>Hemşin'den</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="~/assets/img/favicon.png">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+
+    <link href="~/assets/css/all.min.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.css" rel="stylesheet" />
+    <link href="~/assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/assets/css/main.css" rel="stylesheet" />
+    <link href="~/assets/css/meanmenu.min.css" rel="stylesheet" />
+    <link href="~/assets/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/assets/css/responsive.css" rel="stylesheet" />
+
+    <style>
+        /* Toast bildirimi için stil */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s, transform 0.5s;
+            font-size: 16px;
+            z-index: 9999;
+        }
+
+            .toast.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+    </style>
+
+
+</head>
+<body>
+        <div id="toast" class="toast">Ürün sepete eklendi!</div>
+
+
+        <!--PreLoader-->
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <!--PreLoader Ends-->
+        <!-- header -->
+        <div class="top-header-area" id="sticker">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 text-center">
+                        <div class="main-menu-wrap">
+                            <!-- logo -->
+                            <div class="site-logo">
+                                <a href="Index">
+                                    
+                                    <img src="~/assets/img/logo1.1.png" />
+                                </a>
+                            </div>
+                            <!-- logo -->
+                            <!-- menu start -->
+                            <nav class="main-menu">
+                                <ul>
+                                    <li class="current-list-item">
+                                        <a href="Index">Anasayfa</a>
+
+                                    </li>
+                                    <li><a href="About">Hakkımızda</a></li>
+
+                                    <li class="current-list-item"><a href="Contact">İletişim</a></li>
+
+                                    <li>
+                                        <a href="Shop">Alışveriş</a>
+
+                                    </li>
+
+                                    <li>
+                                        <div class="header-icons">
+                                            <a class="shopping-cart" href="Cart"><i class="fas fa-shopping-cart"></i></a>
+                                            <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                            <div class="mobile-menu"></div>
+                            <!-- menu end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header -->
+        <!-- search area -->
+        <div class="search-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                        <div class="search-bar">
+                            <div class="search-bar-tablecell">
+                                <h3>Search For:</h3>
+                                <input type="text" placeholder="Keywords">
+                                <button type="submit">Search <i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end search area -->
+        <!-- hero area -->
+        @RenderBody()
+        <!-- end advertisement section -->
+        <!-- end latest news -->
+        <!-- logo carousel -->
+        <div class="logo-carousel-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo-carousel-inner">
+                            <div class="single-logo-item">
+                                <img src="~/assets/img/company-logos/logo1.jpeg" />
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="~/assets/img/company-logos/logo2.jpeg" />
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="~/assets/img/company-logos/3.png" />
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="~/assets/img/company-logos/4.png" />
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="~/assets/img/company-logos/5.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end logo carousel -->
+        <!-- footer -->
+        <div class="footer-area">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-box get-in-touch">
+                            <h2 class="widget-title">İletişime Geçin</h2>
+                            <ul>
+                                <li>53750, Çamlıhemşin, Rize, Türkiye.</li>
+                                <li>27000, Şahinbey, Gaziantep, Türkiye.</li>
+                                <li>hemsinorganik@hotmail.com</li>
+                                <li>+90 536 720 20 20</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-box pages">
+                            <h2 class="widget-title">Sözleşmeler</h2>
+                            <ul>
+                                <li><a href="MesafeliSatis">Mesafeli Satış Sözleşmesi</a></li>
+                                <li><a href="GizlilikPolitikasi">Gizlilik Politikası</a></li>
+                                <li><a href="İadeDegisim">İade & Değişim Politikası</a></li>
+                                <li><a href="CerezPolitikasi">Çerez Politikası</a></li>
+                                <li><a href="AydınlatmaMetni">KVKK Aydınlatma Metni</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-box subscribe">
+                            <h2 class="widget-title">Abone Olun!</h2>
+                            <p>En son güncellemeleri almak için e-posta listemize abone olun.</p>
+                            <form action="index.html">
+                                <input type="email" placeholder="Email">
+                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- end footer -->
+        <!-- copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <p>
+                            Copyrights &copy; 2025 - <a href="https://imransdesign.com/">Hemşin'den Organik</a>,  Tüm Haklar Saklıdır.<br>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 text-right col-md-12">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end copyright -->
+        <!-- jquery -->
+        <script src="assets/js/jquery-1.11.3.min.js"></script>
+        <script src="~/assets/js/jquery-1.11.3.min.js"></script>
+        <!-- bootstrap -->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+        <!-- count down -->
+        <script src="~/assets/js/jquery.countdown.js"></script>
+        <script src="assets/js/jquery.countdown.js"></script>
+        <!-- isotope -->
+        <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+        <script src="~/assets/js/jquery.isotope-3.0.6.min.js"></script>
+        <!-- waypoints -->
+        <script src="assets/js/waypoints.js"></script>
+        <script src="~/assets/js/waypoints.js"></script>
+        <!-- owl carousel -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="~/assets/js/owl.carousel.min.js"></script>
+        <!-- magnific popup -->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+        <!-- mean menu -->
+        <script src="assets/js/jquery.meanmenu.min.js"></script>
+        <script src="~/assets/js/jquery.meanmenu.min.js"></script>
+        <!-- sticker js -->
+        <script src="assets/js/sticker.js"></script>
+        <script src="~/assets/js/sticker.js"></script>
+        <!-- main js -->
+        <script src="assets/js/main.js"></script>
+        <script src="~/assets/js/main.js"></script>
+        
+
+
+
+    </body>
+</html>

@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Mesafeli Satış Sözleşmesi";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contract-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+
+        p, li {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="contract-container">
+        <h1>MESAFELİ SATIŞ SÖZLEŞMESİ</h1>
+
+        <div class="highlight">
+            <p><strong>SATICI:</strong> Hemşin'den Organik, Çamlıhemşin/RİZE, 1569874566, 8745698856234125, 05367203015, info@hemsinden.com</p>
+            <p><strong>ALICI:</strong> </p>
+        </div>
+
+        <h2>1. KONU</h2>
+        <p>Bu sözleşmenin konusu, ALICI'nın SATICI'nın [web sitesi/adı] üzerinden sipariş verdiği organik gıda ürünlerinin (süt, yumurta, zeytinyağı, sebze, meyve, salça vb.) satışı ve teslimi ile ilgili hak ve yükümlülüklerin düzenlenmesidir.</p>
+
+        <h2>2. SÖZLEŞMENİN KAPSAMI</h2>
+        <p>Bu sözleşme, 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmelere Dair Yönetmelik hükümleri uyarınca düzenlenmiştir.</p>
+
+        <h2>3. TEMEL HUSUSLAR</h2>
+        <h3>3.1. Ürün/Hizmet Bilgileri</h3>
+        <ul>
+            <li><strong>Ürün Adı:</strong> [Ürün adı]</li>
+            <li><strong>Ürün Kodu:</strong> [Ürün kodu]</li>
+            <li><strong>Fiyat:</strong> [Fiyat] TL (KDV dahil)</li>
+            <li><strong>Teslimat Süresi:</strong> En geç 5 iş günü</li>
+            <li><strong>Teslimat Şekli:</strong> [Kargo şirketi] ile adrese teslim</li>
+        </ul>
+
+        <h3>3.2. Ödeme Bilgileri</h3>
+        <p>Ödeme yöntemleri: Kredi kartı, havale/EFT veya sanal POS sistemleri aracılığıyla çevrimiçi olarak gerçekleştirilir.</p>
+
+        <h2>4. TESLİMAT VE ÖDEME</h2>
+        <p>Ürün/ürünler, ALICI’nın belirtmiş olduğu adrese en geç 5 iş günü içerisinde kargoya verilir. Ürünlerin tedariki bölgesel taze üretime bağlıdır ve hava koşulları, üretim durumu gibi doğal etkenlerden ötürü gecikme yaşanabilir.</p>
+        <p>Ödeme, kredi kartı, havale/EFT veya sanal pos sistemleriyle çevrimiçi olarak gerçekleştirilir.</p>
+
+        <h2>5. CAYMA HAKKI</h2>
+        <p>ALICI, satın aldığı üründen memnun kalmaması durumunda, ürün tesliminden itibaren 14 gün içinde cayma hakkını kullanabilir. Ancak bu hak, aşağıda belirtilen ürünler için geçerli değildir.</p>
+
+        <h2>6. CAYMA HAKKININ KULLANILAMAYACAĞI ÜRÜNLER</h2>
+        <p>Doğası gereği çabuk bozulabilen veya son kullanma tarihi kısa olan gıda ürünleri (süt, yoğurt, peynir, yumurta, taze meyve ve sebze, zeytinyağı, salça, reçel vb.) için cayma hakkı kullanılamaz. Hijyen kuralları gereği ambalajı açılmış ürünlerde de cayma hakkı geçerli değildir.</p>
+        <p>Ancak ürünün bozuk çıkması, ambalajında hasar olması ya da kargo sırasında zarar görmesi gibi durumlarda ALICI, 48 saat içinde durumu belgeleyerek SATICI’ya başvurabilir. Bu durumda ürün değişimi veya iadesi yapılır.</p>
+
+        <h2>7. GENEL HÜKÜMLER</h2>
+        <p>ALICI, sipariş verdiği ürünlerin temel nitelikleri, satış fiyatı, ödeme şekli, teslimat bilgileri ve cayma hakkına dair bilgileri okuduğunu, anladığını ve elektronik ortamda onayladığını kabul ve beyan eder.</p>
+        <p>SATICI, sistemsel hatalardan veya internet altyapısından kaynaklı fiyat yanlışlıklarından sorumlu değildir.</p>
+
+        <h2>8. UYUŞMAZLIKLARIN ÇÖZÜMÜ</h2>
+        <p>İşbu sözleşmenin uygulanmasında, T.C. Ticaret Bakanlığı’nca her yıl belirlenen parasal sınırlar dahilinde ALICI’nın yerleşim yerindeki Tüketici Hakem Heyetleri ile Tüketici Mahkemeleri yetkilidir.</p>
+
+        <h2>9. YÜRÜRLÜK</h2>
+        <p>ALICI, bu sözleşmeyi elektronik ortamda onayladığında tüm maddeleri kabul etmiş sayılır. Sözleşme, onay tarihinde yürürlüğe girer.</p>
+
+        <div class="signature">
+            <p>SATICI: Hemşin'den Organik</p>
+            <p>ALICI:</p>
+            <p>Tarih: 2025</p>
+        </div>
+    </div>
+</body>
+</html>

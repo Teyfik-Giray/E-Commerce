@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eticaretModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="eticaretEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="urunler" EntityType="eticaretModel.urunler" />
+    <EntitySet Name="kategoriler" EntityType="eticaretModel.kategoriler" />
+    <EntitySet Name="kullanicilar" EntityType="eticaretModel.kullanicilar" />
+    <EntitySet Name="stoklar" EntityType="eticaretModel.stoklar" />
+    <AssociationSet Name="FK_urunler_kategoriler" Association="eticaretModel.FK_urunler_kategoriler">
+      <End Role="kategoriler" EntitySet="kategoriler" />
+      <End Role="urunler" EntitySet="urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stoklar_urunler" Association="eticaretModel.FK_stoklar_urunler">
+      <End Role="urunler" EntitySet="urunler" />
+      <End Role="stoklar" EntitySet="stoklar" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="eticaretModel.sysdiagrams" />
+    <EntitySet Name="talepler" EntityType="eticaretModel.talepler" />
+  </EntityContainer>
+  <EntityType Name="urunler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urun_gorseli" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="urun_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urun_fiyatı" Type="Double" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="urun_aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategoriler" Relationship="eticaretModel.FK_urunler_kategoriler" FromRole="urunler" ToRole="kategoriler" />
+    <NavigationProperty Name="stoklar" Relationship="eticaretModel.FK_stoklar_urunler" FromRole="urunler" ToRole="stoklar" />
+  </EntityType>
+  <EntityType Name="kategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="urunler" Relationship="eticaretModel.FK_urunler_kategoriler" FromRole="kategoriler" ToRole="urunler" />
+  </EntityType>
+  <EntityType Name="kullanicilar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kullanici_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="stoklar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stok_miktari" Type="Int32" />
+    <Property Name="urun_id" Type="Int32" />
+    <NavigationProperty Name="urunler" Relationship="eticaretModel.FK_stoklar_urunler" FromRole="stoklar" ToRole="urunler" />
+  </EntityType>
+  <Association Name="FK_urunler_kategoriler">
+    <End Type="eticaretModel.kategoriler" Role="kategoriler" Multiplicity="0..1" />
+    <End Type="eticaretModel.urunler" Role="urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="urunler">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stoklar_urunler">
+    <End Type="eticaretModel.urunler" Role="urunler" Multiplicity="0..1" />
+    <End Type="eticaretModel.stoklar" Role="stoklar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stoklar">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="talepler">
+    <Key>
+      <PropertyRef Name="talep_id" />
+    </Key>
+    <Property Name="talep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="gun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

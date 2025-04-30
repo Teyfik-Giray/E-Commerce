@@ -1,0 +1,40 @@
+﻿@model urunler
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container mx-auto p-8">
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">✏️ Ürün Düzenle</h2>
+        <form action="@Url.Action("EditProduct", "Admin", new { id = Model.id })" method="post" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="productName" class="block text-sm font-medium text-gray-700">Ürün Adı</label>
+                    <input type="text" id="productName" name="productName" value="@Model.urun_adi" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label for="productPrice" class="block text-sm font-medium text-gray-700">Fiyat (₺)</label>
+                    <input type="number" id="productPrice" name="productPrice" value="@Model.urun_fiyatı" step="0.01" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label for="productImage" class="block text-sm font-medium text-gray-700">Ürün Görseli (Güncellemek için seçin)</label>
+                    <input type="file" id="productImage" name="productImage" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" />
+                    <img src="@Url.Content(Model.urun_gorseli)" alt="Ürün Görseli" class="w-32 h-32 mt-4 rounded-md shadow" />
+                </div>
+                <div>
+                    <label for="stockQuantity" class="block text-sm font-medium text-gray-700">Stok Miktarı</label>
+                    <input type="number" id="stockQuantity" name="stockQuantity" value="@Model.stoklar.FirstOrDefault()?.stok_miktari" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+
+            </div>
+            <div class="mt-6">
+                <button type="submit" class="w-full md:w-auto bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition">
+                    💾 Kaydet
+                </button>
+                <a href="@Url.Action("ProductManagement", "Admin")" class="ml-4 text-gray-700 hover:underline">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>

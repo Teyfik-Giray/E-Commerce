@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Çay Üretimi ve Tanıtımı";
+    Layout = "~/Views/Shared/AnasayfaLayout.cshtml";
+}
+
+<!-- single product -->
+<div class="single-product mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <video controls width="100%" poster="~/assets/img/products/tea-poster.jpg">
+                        <source src="~/assets/cay.mp4" type="video/mp4">
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h3>Hemşin'den Organik Çay</h3>
+                    <p class="single-product-pricing"><span>1000 gr</span> 250₺</p>
+
+                    <div class="product-description">
+                        <h4>Çayımızın Özellikleri:</h4>
+                        <ul>
+                            <li>%100 organik ve doğal</li>
+                            <li>Rize'nin verimli topraklarında yetiştirilmiştir</li>
+                            <li>Kimyasal gübre ve pestisit kullanılmadan üretilmiştir</li>
+                            <li>Geleneksel yöntemlerle toplanıp işlenmiştir</li>
+                        </ul>
+
+                        <h4>Çay Üretim Sürecimiz:</h4>
+                        <p>Çaylarımız, Rize'nin yemyeşil yamaçlarında yetişen en kaliteli yapraklardan özenle seçilir. Sabahın erken saatlerinde, çiğ taneleri üzerindeyken toplanan yapraklar, geleneksel fermantasyon sürecinden geçer.</p>
+                        <p>Usta eller tarafından işlenen çay yaprakları, doğal kurutma yöntemleriyle aromasını ve besin değerlerini koruyarak paketlenir. Her aşaması kontrol edilen bu süreç, size en kaliteli çayı ulaştırmak için titizlikle yönetilir.</p>
+
+                        <h4>Demleme Önerisi:</h4>
+                        <p>1 tatlı kaşığı çayı 200ml kaynar suya ekleyin. 5-7 dakika demlendikten sonra servis yapın. İsteğe göre limon, tarçın veya bal ile tatlandırabilirsiniz.</p>
+                    </div>
+
+                    <div class="single-product-form">
+                        <a href="Cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Sepete Ekle</a>
+                        <p><strong>Kategoriler: </strong>Organik Ürünler, İçecekler, Çay</p>
+                    </div>
+
+                    <h4>Paylaş:</h4>
+                    <ul class="product-share">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end single product -->
+<!-- more products -->
+<div class="more-products mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Diğer</span> Ürünlerimiz</h3>
+                    <p>Organik tarımın en güzel örneklerini sizlerle buluşturuyoruz</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="UrunDetay"><img src="~/assets/img/products/peynir.png" alt="Organik Bal"></a>
+                    </div>
+                    <h3>Yayla Peyniri</h3>
+                    <p class="product-price"><span>500 gr</span> 120₺ </p>
+                    <a href="Cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Sepete Ekle</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="UrunDetay"><img src="~/assets/img/products/karadut.png" alt="Doğal Pekmez"></a>
+                    </div>
+                    <h3>Karadut Pekmezi</h3>
+                    <p class="product-price"><span>750 gr</span> 85₺ </p>
+                    <a href="Cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Sepete Ekle</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="UrunDetay"><img src="~/assets/img/products/organisalca.png" alt="Çifte Kavrulmuş Fındık"></a>
+                    </div>
+                    <h3>Organik Domates Salçası</h3>
+                    <p class="product-price"><span>250 gr</span> 65₺ </p>
+                    <a href="Cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Sepete Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end more products -->
+
+<style>
+    .product-description {
+        margin-bottom: 30px;
+    }
+
+        .product-description h4 {
+            color: #F28123;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-description ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .product-description li {
+            margin-bottom: 8px;
+            list-style-type: disc;
+        }
+
+    .embed-responsive {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+</style>

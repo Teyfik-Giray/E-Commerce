@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-900 text-white min-h-screen p-6 transition-all duration-300" style="background-color:darkcyan">
+        <h2 class="text-2xl font-bold mb-6 text-center">📊 Yönetim Paneli</h2>
+        <nav>
+            <ul>
+                <li class="mb-4">
+                    <button class="flex items-center w-full p-3 font-semibold text-left hover:bg-blue-700 rounded transition" onclick="toggleMenu('entegrasyonlar')">
+                        <i class="fas fa-plug mr-2"></i> Entegrasyonlar
+                    </button>
+                    <ul id="entegrasyonlar" class="pl-4 hidden">
+                        <li><a href="OdemeSistemleri" class="block p-2 rounded hover:bg-blue-800">Ödeme Sistemleri</a></li>
+                    </ul>
+                </li>
+                <li class="mb-4">
+                    <a href="UserManagement" class="flex items-center p-3 font-semibold hover:bg-blue-700 rounded transition">
+                        <i class="fas fa-user-cog mr-2"></i> Kullanıcı Yönetimi
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <button class="flex items-center w-full p-3 font-semibold text-left hover:bg-blue-700 rounded transition" onclick="toggleMenu('siteAyarları')">
+                        <i class="fas fa-cogs mr-2"></i> Mağaza Yönetimi
+                    </button>
+                    <ul id="siteAyarları" class="pl-4 hidden">
+                        <li><a href="ProductManagement" class="block p-2 rounded hover:bg-blue-800">Ürün Yönetimi</a></li>
+                        <li><a href="#" class="block p-2 rounded hover:bg-blue-800">Sipariş Takibi</a></li>
+                    </ul>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="flex items-center p-3 font-semibold hover:bg-blue-700 rounded transition">
+                        <i class="fas fa-chart-line mr-2"></i> Raporlar ve Analizler
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="MusteriTalepleri" class="flex items-center p-3 font-semibold hover:bg-blue-700 rounded transition">
+                        <i class="fas fa-chart-line mr-2"></i> Müşteri Talepleri
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 p-6">
+        @*<header class="flex justify-between items-center bg-white p-4 rounded shadow-md mb-6">
+            <h1 class="text-xl font-semibold text-gray-800">📌 Dashboard</h1>
+            <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Çıkış Yap</button>
+        </header>*@
+
+        <section class="bg-white p-6 rounded shadow-lg">
+            @RenderBody()
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu(menuId) {
+            document.getElementById(menuId).classList.toggle("hidden");
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function toggleMenu(menuId) {
+            var menu = document.getElementById(menuId);
+            menu.classList.toggle("hidden");
+        }
+
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+                datasets: [{
+                    label: 'Mac',
+                    data: [3000, 4000, 5500, 4500, 5000, 4700, 5200],
+                    borderColor: 'blue',
+                    fill: false
+                }, {
+                    label: 'Windows',
+                    data: [3200, 3700, 6000, 4800, 5300, 4500, 5000],
+                    borderColor: 'gray',
+                    fill: false
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

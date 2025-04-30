@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "ProductManagement";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model ProductManagementViewModel
+
+<div class="container mx-auto p-8">
+    <!-- Ürün Ekle Formu -->
+    <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">🛍 Yeni Ürün Ekle</h2>
+        <form action="@Url.Action("AddProduct", "Admin")" method="post" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="productImage" class="block text-sm font-medium text-gray-700">Ürün Görseli</label>
+                    <input type="file" id="productImage" name="productImage" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label for="productName" class="block text-sm font-medium text-gray-700">Ürün Adı</label>
+                    <input type="text" id="productName" name="productName" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label for="productDescription" class="block text-sm font-medium text-gray-700">Ürün Açıklaması</label>
+                    <textarea id="productDescription" name="productDescription" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                </div>
+                <div>
+                    <label for="categoryId" class="block text-sm font-medium text-gray-700">Kategori</label>
+                    <select id="categoryId" name="categoryId" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required>
+                        <option value="">Seçiniz</option>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category.id">@category.kategori_adi</option>
+                        }
+                    </select>
+
+                </div>
+
+                <div>
+                    <label for="productPrice" class="block text-sm font-medium text-gray-700">Fiyat (₺)</label>
+                    <input type="number" id="productPrice" name="productPrice" step="0.01" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label for="stockQuantity" class="block text-sm font-medium text-gray-700">Stok Miktarı</label>
+                    <input type="number" id="stockQuantity" name="stockQuantity" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+                </div>
+
+            </div>
+            <div class="mt-6">
+                <button type="submit" class="w-full md:w-auto bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition">
+                    ➕ Ürünü Ekle
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- Kategori Ekleme Formu -->
+    <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">📝 Yeni Kategori Ekle</h2>
+        <form action="@Url.Action("AddCategory", "Admin")" method="post">
+            <div>
+                <label for="categoryName" class="block text-sm font-medium text-gray-700">Kategori Adı</label>
+                <input type="text" id="categoryName" name="categoryName" class="mt-2 block w-full border border-gray-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" required />
+            </div>
+
+            <div class="mt-6">
+                <button type="submit" class="w-full md:w-auto bg-green-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+                    ➕ Kategoriyi Ekle
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Ürün Listeleme Tablosu -->
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">📦 Ürünler</h2>
+        <table class="w-full border-collapse overflow-hidden rounded-lg shadow-md">
+            <thead class="bg-gray-200 text-gray-700">
+                <tr>
+                    <th class="py-3 px-6 text-left">Görsel</th>
+                    <th class="py-3 px-6 text-left">Ürün Adı</th>
+                    <th class="py-3 px-6 text-left">Fiyat</th>
+                    <th class="py-3 px-6 text-left">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr class="border-b hover:bg-gray-100 transition">
+                        <td class="py-3 px-6">
+                            <img src="@Url.Content(product.urun_gorseli)" alt="Ürün Görseli" class="w-16 h-16 object-cover rounded-md shadow" />
+                        </td>
+                        <td class="py-3 px-6">@product.urun_adi</td>
+                        <td class="py-3 px-6 font-semibold text-gray-700">@product.urun_fiyatı TL</td>
+                        <td class="py-3 px-6">
+                            <a href="@Url.Action("EditProduct", "Admin", new { id = product.id })" class="bg-yellow-500 text-white py-1 px-3 rounded shadow hover:bg-yellow-600 transition">✏️ Düzenle</a>
+                            <a href="@Url.Action("DeleteProduct", "Admin", new { id = product.id })" class="bg-red-500 text-white py-1 px-3 rounded shadow hover:bg-red-600 transition ml-2">🗑 Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

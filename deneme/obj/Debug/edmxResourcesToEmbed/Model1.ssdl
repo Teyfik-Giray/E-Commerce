@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eticaretModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="kategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_adi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kullanicilar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="soyadi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kullanici_adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="stoklar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urun_id" Type="int" />
+    <Property Name="stok_miktari" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="talepler">
+    <Key>
+      <PropertyRef Name="talep_id" />
+    </Key>
+    <Property Name="talep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="eposta" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="sehir" Type="nvarchar" MaxLength="50" />
+    <Property Name="urun" Type="nvarchar" MaxLength="50" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="gun" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="urunler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_id" Type="int" />
+    <Property Name="urun_gorseli" Type="nvarchar" MaxLength="500" />
+    <Property Name="urun_adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="urun_aciklama" Type="nvarchar" MaxLength="50" />
+    <Property Name="urun_fiyatı" Type="float" />
+  </EntityType>
+  <Association Name="FK_stoklar_urunler">
+    <End Role="urunler" Type="Self.urunler" Multiplicity="0..1" />
+    <End Role="stoklar" Type="Self.stoklar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stoklar">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_urunler_kategoriler">
+    <End Role="kategoriler" Type="Self.kategoriler" Multiplicity="0..1" />
+    <End Role="urunler" Type="Self.urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="urunler">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eticaretModelStoreContainer">
+    <EntitySet Name="kategoriler" EntityType="Self.kategoriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kullanicilar" EntityType="Self.kullanicilar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stoklar" EntityType="Self.stoklar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="talepler" EntityType="Self.talepler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="urunler" EntityType="Self.urunler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_stoklar_urunler" Association="Self.FK_stoklar_urunler">
+      <End Role="urunler" EntitySet="urunler" />
+      <End Role="stoklar" EntitySet="stoklar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_urunler_kategoriler" Association="Self.FK_urunler_kategoriler">
+      <End Role="kategoriler" EntitySet="kategoriler" />
+      <End Role="urunler" EntitySet="urunler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
